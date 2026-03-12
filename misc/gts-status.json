@@ -1,0 +1,581 @@
+{
+  "account": {
+    "acct": "some_user@example.org",
+    "avatar": "https://example.org/media/some_user/avatar/original/avatar.jpeg",
+    "avatar_description": "A cute drawing of a smiling sloth.",
+    "avatar_media_id": "01JAJ3XCD66K3T99JZESCR137W",
+    "avatar_static": "https://example.org/media/some_user/avatar/static/avatar.png",
+    "bot": true,
+    "created_at": "2021-07-30T09:20:25+00:00",
+    "custom_css": "string",
+    "discoverable": true,
+    "display_name": "big jeff (he/him)",
+    "emojis": [
+      {
+        "category": "blobcats",
+        "shortcode": "blobcat_uwu",
+        "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+        "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+        "visible_in_picker": true
+      }
+    ],
+    "enable_rss": true,
+    "fields": [
+      {
+        "name": "pronouns",
+        "value": "they/them",
+        "verified_at": "2021-07-30T09:20:25+00:00"
+      }
+    ],
+    "followers_count": 0,
+    "following_count": 0,
+    "group": true,
+    "header": "https://example.org/media/some_user/header/original/header.jpeg",
+    "header_description": "A sunlit field with purple flowers.",
+    "header_media_id": "01JAJ3XCD66K3T99JZESCR137W",
+    "header_static": "https://example.org/media/some_user/header/static/header.png",
+    "hide_collections": true,
+    "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+    "indexable": true,
+    "last_status_at": "2021-07-30",
+    "locked": true,
+    "moved": "string",
+    "noindex": true,
+    "note": "string",
+    "role": {
+      "color": "string",
+      "highlighted": true,
+      "id": "string",
+      "name": "string",
+      "permissions": "string"
+    },
+    "roles": [
+      {
+        "color": "string",
+        "id": "string",
+        "name": "string"
+      }
+    ],
+    "source": {
+      "also_known_as_uris": [
+        "string"
+      ],
+      "fields": [
+        {
+          "name": "pronouns",
+          "value": "they/them",
+          "verified_at": "2021-07-30T09:20:25+00:00"
+        }
+      ],
+      "follow_requests_count": 0,
+      "language": "string",
+      "note": "string",
+      "privacy": "string",
+      "sensitive": true,
+      "status_content_type": "string",
+      "web_include_boosts": true,
+      "web_layout": "string",
+      "web_visibility": "string"
+    },
+    "statuses_count": 0,
+    "suspended": true,
+    "theme": "string",
+    "url": "https://example.org/@some_user",
+    "username": "some_user"
+  },
+  "application": {
+    "client_id": "string",
+    "client_secret": "string",
+    "created_at": "2021-07-30T09:20:25+00:00",
+    "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+    "name": "Tusky",
+    "redirect_uri": "https://example.org/callback?some=query",
+    "redirect_uris": [
+      "https://example.org/callback?some=query"
+    ],
+    "scopes": [
+      "string"
+    ],
+    "vapid_key": "string",
+    "website": "https://tusky.app"
+  },
+  "bookmarked": true,
+  "card": {
+    "author_name": "weewee@buzzfeed.com",
+    "author_url": "https://buzzfeed.com/authors/weewee",
+    "blurhash": "string",
+    "description": "Is water wet? We're not sure. In this article, we ask an expert...",
+    "embed_url": "string",
+    "height": 0,
+    "html": "string",
+    "image": "https://example.org/fileserver/preview/thumb.jpg",
+    "provider_name": "Buzzfeed",
+    "provider_url": "https://buzzfeed.com",
+    "title": "Buzzfeed - Is Water Wet?",
+    "type": "link",
+    "url": "https://buzzfeed.com/some/fuckin/buzzfeed/article",
+    "width": 0
+  },
+  "content": "<p>Hey this is a status!</p>",
+  "content_type": "string",
+  "created_at": "2021-07-30T09:20:25+00:00",
+  "edited_at": "2021-07-30T09:20:25+00:00",
+  "emojis": [
+    {
+      "category": "blobcats",
+      "shortcode": "blobcat_uwu",
+      "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+      "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+      "visible_in_picker": true
+    }
+  ],
+  "favourited": true,
+  "favourites_count": 0,
+  "filtered": [
+    {
+      "filter": {
+        "context": [
+          "home",
+          "public"
+        ],
+        "expires_at": "2024-02-01T02:57:49Z",
+        "filter_action": "string",
+        "id": "string",
+        "keywords": [
+          {
+            "id": "string",
+            "keyword": "fnord",
+            "whole_word": true
+          }
+        ],
+        "statuses": [
+          {
+            "id": "string",
+            "phrase": "string"
+          }
+        ],
+        "title": "Linux Words"
+      },
+      "keyword_matches": [
+        "string"
+      ],
+      "status_matches": [
+        "string"
+      ]
+    }
+  ],
+  "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+  "in_reply_to_account_id": "01FBVD42CQ3ZEEVMW180SBX03B",
+  "in_reply_to_id": "01FBVD42CQ3ZEEVMW180SBX03B",
+  "interaction_policy": {
+    "can_favourite": {
+      "automatic_approval": [
+        "string"
+      ],
+      "manual_approval": [
+        "string"
+      ]
+    },
+    "can_reblog": {
+      "automatic_approval": [
+        "string"
+      ],
+      "manual_approval": [
+        "string"
+      ]
+    },
+    "can_reply": {
+      "automatic_approval": [
+        "string"
+      ],
+      "manual_approval": [
+        "string"
+      ]
+    }
+  },
+  "language": "en",
+  "local_only": true,
+  "media_attachments": [
+    {
+      "blurhash": "string",
+      "description": "This is a picture of a kitten.",
+      "error": "network timeout",
+      "id": "01FC31DZT1AYWDZ8XTCRWRBYRK",
+      "meta": {
+        "focus": {
+          "x": 0,
+          "y": 0
+        },
+        "original": {
+          "aspect": 1.777777778,
+          "bitrate": 1000000,
+          "duration": 5.43,
+          "frame_rate": "30",
+          "height": 1080,
+          "size": "1920x1080",
+          "width": 1920
+        },
+        "small": {
+          "aspect": 1.777777778,
+          "bitrate": 1000000,
+          "duration": 5.43,
+          "frame_rate": "30",
+          "height": 1080,
+          "size": "1920x1080",
+          "width": 1920
+        }
+      },
+      "preview_remote_url": "https://some-other-server.org/attachments/small/ahhhhh.jpeg",
+      "preview_url": "https://example.org/fileserver/some_id/attachments/some_id/small/attachment.jpeg",
+      "remote_url": "https://some-other-server.org/attachments/original/ahhhhh.jpeg",
+      "text_url": "string",
+      "type": "image",
+      "url": "https://example.org/fileserver/some_id/attachments/some_id/original/attachment.jpeg"
+    }
+  ],
+  "mentions": [
+    {
+      "acct": "some_user@example.org",
+      "id": "01FBYJHQWQZAVWFRK9PDYTKGMB",
+      "url": "https://example.org/@some_user",
+      "username": "some_user"
+    }
+  ],
+  "muted": true,
+  "pinned": true,
+  "poll": {
+    "emojis": [
+      {
+        "category": "blobcats",
+        "shortcode": "blobcat_uwu",
+        "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+        "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+        "visible_in_picker": true
+      }
+    ],
+    "expired": true,
+    "expires_at": "string",
+    "id": "01FBYKMD1KBMJ0W6JF1YZ3VY5D",
+    "multiple": true,
+    "options": [
+      {
+        "title": "string",
+        "votes_count": 0
+      }
+    ],
+    "own_votes": [
+      0
+    ],
+    "voted": true,
+    "voters_count": 0,
+    "votes_count": 0
+  },
+  "reblog": {
+    "account": {
+      "acct": "some_user@example.org",
+      "avatar": "https://example.org/media/some_user/avatar/original/avatar.jpeg",
+      "avatar_description": "A cute drawing of a smiling sloth.",
+      "avatar_media_id": "01JAJ3XCD66K3T99JZESCR137W",
+      "avatar_static": "https://example.org/media/some_user/avatar/static/avatar.png",
+      "bot": true,
+      "created_at": "2021-07-30T09:20:25+00:00",
+      "custom_css": "string",
+      "discoverable": true,
+      "display_name": "big jeff (he/him)",
+      "emojis": [
+        {
+          "category": "blobcats",
+          "shortcode": "blobcat_uwu",
+          "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+          "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+          "visible_in_picker": true
+        }
+      ],
+      "enable_rss": true,
+      "fields": [
+        {
+          "name": "pronouns",
+          "value": "they/them",
+          "verified_at": "2021-07-30T09:20:25+00:00"
+        }
+      ],
+      "followers_count": 0,
+      "following_count": 0,
+      "group": true,
+      "header": "https://example.org/media/some_user/header/original/header.jpeg",
+      "header_description": "A sunlit field with purple flowers.",
+      "header_media_id": "01JAJ3XCD66K3T99JZESCR137W",
+      "header_static": "https://example.org/media/some_user/header/static/header.png",
+      "hide_collections": true,
+      "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+      "indexable": true,
+      "last_status_at": "2021-07-30",
+      "locked": true,
+      "moved": "string",
+      "noindex": true,
+      "note": "string",
+      "role": {
+        "color": "string",
+        "highlighted": true,
+        "id": "string",
+        "name": "string",
+        "permissions": "string"
+      },
+      "roles": [
+        {
+          "color": "string",
+          "id": "string",
+          "name": "string"
+        }
+      ],
+      "source": {
+        "also_known_as_uris": [
+          "string"
+        ],
+        "fields": [
+          {
+            "name": "pronouns",
+            "value": "they/them",
+            "verified_at": "2021-07-30T09:20:25+00:00"
+          }
+        ],
+        "follow_requests_count": 0,
+        "language": "string",
+        "note": "string",
+        "privacy": "string",
+        "sensitive": true,
+        "status_content_type": "string",
+        "web_include_boosts": true,
+        "web_layout": "string",
+        "web_visibility": "string"
+      },
+      "statuses_count": 0,
+      "suspended": true,
+      "theme": "string",
+      "url": "https://example.org/@some_user",
+      "username": "some_user"
+    },
+    "application": {
+      "client_id": "string",
+      "client_secret": "string",
+      "created_at": "2021-07-30T09:20:25+00:00",
+      "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+      "name": "Tusky",
+      "redirect_uri": "https://example.org/callback?some=query",
+      "redirect_uris": [
+        "https://example.org/callback?some=query"
+      ],
+      "scopes": [
+        "string"
+      ],
+      "vapid_key": "string",
+      "website": "https://tusky.app"
+    },
+    "bookmarked": true,
+    "card": {
+      "author_name": "weewee@buzzfeed.com",
+      "author_url": "https://buzzfeed.com/authors/weewee",
+      "blurhash": "string",
+      "description": "Is water wet? We're not sure. In this article, we ask an expert...",
+      "embed_url": "string",
+      "height": 0,
+      "html": "string",
+      "image": "https://example.org/fileserver/preview/thumb.jpg",
+      "provider_name": "Buzzfeed",
+      "provider_url": "https://buzzfeed.com",
+      "title": "Buzzfeed - Is Water Wet?",
+      "type": "link",
+      "url": "https://buzzfeed.com/some/fuckin/buzzfeed/article",
+      "width": 0
+    },
+    "content": "<p>Hey this is a status!</p>",
+    "content_type": "string",
+    "created_at": "2021-07-30T09:20:25+00:00",
+    "edited_at": "2021-07-30T09:20:25+00:00",
+    "emojis": [
+      {
+        "category": "blobcats",
+        "shortcode": "blobcat_uwu",
+        "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+        "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+        "visible_in_picker": true
+      }
+    ],
+    "favourited": true,
+    "favourites_count": 0,
+    "filtered": [
+      {
+        "filter": {
+          "context": [
+            "home",
+            "public"
+          ],
+          "expires_at": "2024-02-01T02:57:49Z",
+          "filter_action": "string",
+          "id": "string",
+          "keywords": [
+            {
+              "id": "string",
+              "keyword": "fnord",
+              "whole_word": true
+            }
+          ],
+          "statuses": [
+            {
+              "id": "string",
+              "phrase": "string"
+            }
+          ],
+          "title": "Linux Words"
+        },
+        "keyword_matches": [
+          "string"
+        ],
+        "status_matches": [
+          "string"
+        ]
+      }
+    ],
+    "id": "01FBVD42CQ3ZEEVMW180SBX03B",
+    "in_reply_to_account_id": "01FBVD42CQ3ZEEVMW180SBX03B",
+    "in_reply_to_id": "01FBVD42CQ3ZEEVMW180SBX03B",
+    "interaction_policy": {
+      "can_favourite": {
+        "automatic_approval": [
+          "string"
+        ],
+        "manual_approval": [
+          "string"
+        ]
+      },
+      "can_reblog": {
+        "automatic_approval": [
+          "string"
+        ],
+        "manual_approval": [
+          "string"
+        ]
+      },
+      "can_reply": {
+        "automatic_approval": [
+          "string"
+        ],
+        "manual_approval": [
+          "string"
+        ]
+      }
+    },
+    "language": "en",
+    "local_only": true,
+    "media_attachments": [
+      {
+        "blurhash": "string",
+        "description": "This is a picture of a kitten.",
+        "error": "network timeout",
+        "id": "01FC31DZT1AYWDZ8XTCRWRBYRK",
+        "meta": {
+          "focus": {
+            "x": 0,
+            "y": 0
+          },
+          "original": {
+            "aspect": 1.777777778,
+            "bitrate": 1000000,
+            "duration": 5.43,
+            "frame_rate": "30",
+            "height": 1080,
+            "size": "1920x1080",
+            "width": 1920
+          },
+          "small": {
+            "aspect": 1.777777778,
+            "bitrate": 1000000,
+            "duration": 5.43,
+            "frame_rate": "30",
+            "height": 1080,
+            "size": "1920x1080",
+            "width": 1920
+          }
+        },
+        "preview_remote_url": "https://some-other-server.org/attachments/small/ahhhhh.jpeg",
+        "preview_url": "https://example.org/fileserver/some_id/attachments/some_id/small/attachment.jpeg",
+        "remote_url": "https://some-other-server.org/attachments/original/ahhhhh.jpeg",
+        "text_url": "string",
+        "type": "image",
+        "url": "https://example.org/fileserver/some_id/attachments/some_id/original/attachment.jpeg"
+      }
+    ],
+    "mentions": [
+      {
+        "acct": "some_user@example.org",
+        "id": "01FBYJHQWQZAVWFRK9PDYTKGMB",
+        "url": "https://example.org/@some_user",
+        "username": "some_user"
+      }
+    ],
+    "muted": true,
+    "pinned": true,
+    "poll": {
+      "emojis": [
+        {
+          "category": "blobcats",
+          "shortcode": "blobcat_uwu",
+          "static_url": "https://example.org/fileserver/emojis/blogcat_uwu.png",
+          "url": "https://example.org/fileserver/emojis/blogcat_uwu.gif",
+          "visible_in_picker": true
+        }
+      ],
+      "expired": true,
+      "expires_at": "string",
+      "id": "01FBYKMD1KBMJ0W6JF1YZ3VY5D",
+      "multiple": true,
+      "options": [
+        {
+          "title": "string",
+          "votes_count": 0
+        }
+      ],
+      "own_votes": [
+        0
+      ],
+      "voted": true,
+      "voters_count": 0,
+      "votes_count": 0
+    },
+    "reblog": "string",
+    "reblogged": true,
+    "reblogs_count": 0,
+    "replies_count": 0,
+    "sensitive": false,
+    "spoiler_text": "warning nsfw",
+    "tags": [
+      {
+        "following": true,
+        "history": [],
+        "name": "helloworld",
+        "url": "https://example.org/tags/helloworld"
+      }
+    ],
+    "text": "string",
+    "uri": "https://example.org/users/some_user/statuses/01FBVD42CQ3ZEEVMW180SBX03B",
+    "url": "https://example.org/@some_user/statuses/01FBVD42CQ3ZEEVMW180SBX03B",
+    "visibility": "unlisted"
+  },
+  "reblogged": true,
+  "reblogs_count": 0,
+  "replies_count": 0,
+  "sensitive": false,
+  "spoiler_text": "warning nsfw",
+  "tags": [
+    {
+      "following": true,
+      "history": [],
+      "name": "helloworld",
+      "url": "https://example.org/tags/helloworld"
+    }
+  ],
+  "text": "string",
+  "uri": "https://example.org/users/some_user/statuses/01FBVD42CQ3ZEEVMW180SBX03B",
+  "url": "https://example.org/@some_user/statuses/01FBVD42CQ3ZEEVMW180SBX03B",
+  "visibility": "unlisted"
+}

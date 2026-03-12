@@ -22,7 +22,12 @@ class SimpleSummarizer(private val maxLength: Int = 500) : Summarizer {
         val joinedText = posts.sortedBy { it.publishedAt }
             .joinToString("\n\n") { post ->
                 val platform = post.platformName.uppercase()
-                val content = post.activityObject.content.take(100) // 各投稿から100文字抽出
+                val plainText = post.activityObject.content.replace(Regex("<[^>]*>"), "")
+                    .replace("&nbsp;", " ")
+                    .replace("&lt;", "<")
+                    .replace("&gt;", ">")
+                    .trim()
+                val content = plainText.take(100)
                 "[$platform] $content"
             }
 

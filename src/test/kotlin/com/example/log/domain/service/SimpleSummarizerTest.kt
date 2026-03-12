@@ -45,6 +45,16 @@ class SimpleSummarizerTest {
         result shouldEndWith "..."
     }
 
+    @Test
+    @DisplayName("HTMLタグが含まれるとき、タグが除去されて要約されるべき")
+    fun shouldStripHtmlTags() {
+        val posts = listOf(createDummyPost("GTS", "<p>Hello <b>World</b></p>"))
+
+        val result = summarizer.summarize(posts)
+
+        result shouldContain "[GOTOSOCIAL] Hello World"
+    }
+
     private fun createDummyPost(platformName: String, content: String): ActivityPost {
         return ActivityPost(
             actor = Actor("name", "user", "host", null, null),

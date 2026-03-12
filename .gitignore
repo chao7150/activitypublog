@@ -1,3 +1,14 @@
-.env
-docker/docker-compose.yml
-memo
+.gradle
+build
+bin
+out
+.idea
+*.iml
+*.iws
+.project
+.settings
+.classpath
+gradle-app.setting
+.DS_Store
+v1/bin
+v1/main

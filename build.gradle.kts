@@ -35,6 +35,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

@@ -57,10 +57,16 @@ class PostRepositoryImpl(
             content = obj.content,
             publishedAt = obj.publishedAt,
             url = obj.url,
+            type = when (obj) {
+                is ActivityObject.Note -> "Note"
+                is ActivityObject.Article -> "Article"
+            },
             platform = post.source.platform,
             originalId = post.source.originalId,
             fetchedAt = post.source.fetchedAt,
             summary = if (obj is ActivityObject.Note) obj.summary else null,
+            title = if (obj is ActivityObject.Article) obj.title else null,
+            tags = if (obj is ActivityObject.Article) obj.tags else emptyList(),
             attachments = if (obj is ActivityObject.Note) {
                 obj.attachments.map { 
                     AttachmentJpaEntity(type = it.type.name, url = it.url, description = it.description) 
@@ -70,7 +76,7 @@ class PostRepositoryImpl(
     }
 
     private fun toDomain(entity: PostJpaEntity): ActivityPost {
-        // Actor の復元（簡易版。本来は Actor 情報を永続化すべきだが、一旦識別子から生成）
+        // Actor の復元
         val actor = Actor(
             name = entity.actorName,
             preferredUsername = entity.actorIdentifier.substringBefore("@"),
@@ -79,19 +85,28 @@ class PostRepositoryImpl(
             avatarUrl = null
         )
 
-        val activityObject = ActivityObject.Note(
-            content = entity.content,
-            publishedAt = entity.publishedAt,
-            url = entity.url,
-            summary = entity.summary,
-            attachments = entity.attachments.map {
-                Attachment(
-                    type = AttachmentType.valueOf(it.type),
-                    url = it.url,
-                    description = it.description
-                )
-            }
-        )
+        val activityObject = when (entity.type) {
+            "Article" -> ActivityObject.Article(
+                title = entity.title ?: "",
+                content = entity.content,
+                publishedAt = entity.publishedAt,
+                url = entity.url,
+                tags = entity.tags
+            )
+            else -> ActivityObject.Note(
+                content = entity.content,
+                publishedAt = entity.publishedAt,
+                url = entity.url,
+                summary = entity.summary,
+                attachments = entity.attachments.map {
+                    Attachment(
+                        type = AttachmentType.valueOf(it.type),
+                        url = it.url,
+                        description = it.description
+                    )
+                }
+            )
+        }
 
         return ActivityPost(
             id = entity.id,

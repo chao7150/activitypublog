@@ -1,6 +1,7 @@
 package com.example.log.usecase.digest
 
 import com.example.log.domain.gateway.PostRepository
+import com.example.log.domain.gateway.PostBroadcaster
 import com.example.log.domain.model.*
 import com.example.log.domain.service.Summarizer
 import org.slf4j.LoggerFactory
@@ -14,19 +15,19 @@ import java.time.temporal.ChronoUnit
 @Service
 class GenerateDigestUseCase(
     private val repository: PostRepository,
-    private val summarizer: Summarizer
+    private val summarizer: Summarizer,
+    private val broadcasters: List<PostBroadcaster>
 ) {
     private val logger = LoggerFactory.getLogger(javaClass)
 
     /**
-     * ダイジェストを生成して保存する。
+     * ダイジェストを生成して保存し、各プラットフォームへ配信する。
      * @param hours 過去何時間分の投稿を対象にするか（デフォルト24時間）
      */
     fun execute(hours: Long = 24): ActivityPost? {
         val since = Instant.now().minus(hours, ChronoUnit.HOURS)
         
         // 1. 対象となる投稿をDBから取得
-        // (本来は repository に findByPublishedAfter メソッドを追加すべきだが、一旦全取得からフィルタ)
         val targetPosts = repository.findAllOrderByPublishedDesc()
             .filter { it.publishedAt.isAfter(since) }
             .filter { it.source.platform != PlatformType.INTERNAL } // ダイジェスト自身は除外
@@ -43,9 +44,20 @@ class GenerateDigestUseCase(
         val digestPost = createDigestPost(digestText)
 
         // 4. 保存
-        return repository.save(digestPost).also {
+        val savedPost = repository.save(digestPost).also {
             logger.info("ダイジェスト投稿を保存しました (ID: ${it.id})")
         }
+
+        // 5. 各プラットフォームへ配信
+        broadcasters.forEach { broadcaster ->
+            try {
+                broadcaster.broadcast(savedPost)
+            } catch (e: Exception) {
+                logger.error("配信中にエラーが発生しました: ${e.message}")
+            }
+        }
+
+        return savedPost
     }
 
     private fun createDigestPost(text: String): ActivityPost {

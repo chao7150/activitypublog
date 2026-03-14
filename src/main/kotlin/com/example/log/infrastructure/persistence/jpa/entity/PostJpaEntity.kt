@@ -26,6 +26,9 @@ class PostJpaEntity(
     @Column
     val url: String?,
 
+    @Column(nullable = false)
+    val type: String,
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val platform: PlatformType,
@@ -38,6 +41,14 @@ class PostJpaEntity(
 
     @Column(columnDefinition = "TEXT")
     val summary: String? = null,
+
+    @Column
+    val title: String? = null,
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "post_tags", joinColumns = [JoinColumn(name = "post_id")])
+    @Column(name = "tag")
+    val tags: List<String> = emptyList(),
 
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")

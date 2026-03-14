@@ -15,6 +15,14 @@ spring:
   main:
     banner-mode: "off"
 
+gts:
+  instance-url: ${GTS_INSTANCE_URL:https://gts.example.com}
+  access-token: ${GTS_ACCESS_TOKEN:your-token}
+  account-id: ${GTS_ACCOUNT_ID:01F8MH8B1S8P8YJ9S8G2E7J8K8}
+
+discord:
+  webhook-url: ${DISCORD_WEBHOOK_URL:https://discord.com/api/webhooks/your-webhook}
+
 logging:
   level:
     org.hibernate.SQL: DEBUG

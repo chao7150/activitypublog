@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    container_name: mastodon-log-app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mastodon_log
+      - SPRING_DATASOURCE_USERNAME=chao
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: groonga/pgroonga:3.2.3-debian-16
+    container_name: mastodon-log-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=chao
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mastodon_log
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chao -d mastodon_log"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

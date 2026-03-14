@@ -37,8 +37,14 @@
 - **Decision**: 24時間ごとの `Digest` を自動生成し、これを `INTERNAL` プラットフォーム発の `ActivityPost` として管理、さらに各外部サービスへ `Broadcast`（再投稿）する。
 - **Consequences**: 単なるログツールではなく、コンテンツの再循環ハブとして機能させる。
 
-## ADR 6: フロントエンド技術の選定 (HTMX + Tailwind CSS)
+## ADR 7: PostgreSQL + PGroonga による日本語全文検索
 - **Status**: Accepted
-- **Context**: 複雑な SPA フレームワークは避けたいが、モダンな操作感は欲しい。
-- **Decision**: HTMX によるサーバーサイド駆動の動的 UI と、Tailwind CSS によるデザイン。
-- **Consequences**: JavaScript の記述量を最小限に抑えつつ、サクサク動く UI を実現する。
+- **Context**: 過去の膨大な投稿から日本語の内容を高速かつ正確に検索したい。
+- **Decision**: DB に PostgreSQL を採用し、日本語全文検索エンジン `PGroonga` を導入する。
+- **Consequences**: `&@` 演算子による形態素解析ベースの高度な日本語検索が可能になる。
+
+## ADR 8: インフラ層における Entity の厳格な分離
+- **Status**: Accepted
+- **Context**: ドメインモデルを特定の技術（JPA/Hibernate）に依存させたくない。
+- **Decision**: 内部ドメイン Entity (`ActivityPost`) と JPA Entity (`PostJpaEntity`) を完全に分離し、Repository 実装クラスで相互にマッピングする。
+- **Consequences**: 技術スタックの変更に強くなり、ドメイン層の純粋性が保たれるが、マッピングコードの維持コストが発生する。

@@ -13,4 +13,5 @@ interface PostRepository {
     fun findAllOrderByPublishedDesc(): List<ActivityPost>
     fun findByPlatform(platform: String): List<ActivityPost>
     fun findLatestOneByPlatform(platform: String): ActivityPost?
+    fun search(keyword: String): List<ActivityPost>
 }

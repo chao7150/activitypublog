@@ -1,0 +1,20 @@
+services:
+  db:
+    image: groonga/pgroonga:3.2.3-debian-16
+    container_name: mastodon-log-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-chao}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-mastodon_log}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

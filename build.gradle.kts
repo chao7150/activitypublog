@@ -26,7 +26,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
     // DB
-    runtimeOnly("com.mysql:mysql-connector-j")
+    runtimeOnly("org.postgresql:postgresql")
     
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {

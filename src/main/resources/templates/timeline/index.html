@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: html(content=~{::#timeline})}">
+<body>
+    <div id="timeline">
+        <header class="mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Timeline</h1>
+            <p class="mt-2 text-gray-500">GoToSocial や WordPress など、集約されたすべての投稿を表示します。</p>
+        </header>
+
+        <div th:replace="~{timeline/fragments/post-list :: post-list}"></div>
+    </div>
+</body>
+</html>

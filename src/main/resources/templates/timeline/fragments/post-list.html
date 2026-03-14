@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="post-list" class="space-y-6">
+        <article th:each="post, iter : ${posts}" 
+                 th:classappend="${post.source.platform.name() == 'INTERNAL'} ? 'bg-yellow-50 border-yellow-200 shadow-sm' : 'bg-white border-gray-100 shadow-sm'"
+                 class="rounded-xl border overflow-hidden hover:shadow-md transition duration-200">
+            <div class="p-6">
+                <!-- Header: Platform & Actor -->
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div th:classappend="${post.source.platform.name() == 'INTERNAL'} ? 'bg-gradient-to-br from-yellow-100 to-orange-100 text-orange-600' : 'bg-gradient-to-br from-indigo-100 to-blue-100 text-blue-600'"
+                             class="w-10 h-10 rounded-full flex items-center justify-center font-bold">
+                            <span th:text="${post.actor.name?.substring(0, 1) ?: '?'}">A</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-900" th:text="${post.actor.name ?: 'Unknown'}">Name</div>
+                            <div class="text-xs text-gray-500" th:text="${post.actor.preferredUsername + '@' + post.actor.host}">@user@host</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span th:classappend="${post.source.platform.name() == 'INTERNAL'} ? 'bg-yellow-100 text-yellow-800 border-yellow-200' : 'bg-gray-100 text-gray-600 border-gray-200'"
+                              class="px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md border" th:text="${post.source.platform}">GTS</span>
+                        <span class="text-xs text-gray-400" th:text="${#temporals.format(post.publishedAt, 'yyyy/MM/dd HH:mm')}">Time</span>
+                    </div>
+                </div>
+
+                <!-- Content: Article -->
+                <div th:if="${post.activityObject.class.simpleName == 'Article'}" class="space-y-3">
+                    <h2 class="text-xl font-bold text-gray-900 hover:text-blue-600">
+                        <a th:href="${post.activityObject.url}" th:text="${post.activityObject.title}" target="_blank">Title</a>
+                    </h2>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span th:each="tag : ${post.activityObject.tags}" class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full" th:text="'#' + ${tag}">#tag</span>
+                    </div>
+                </div>
+
+                <!-- Content: Note -->
+                <div class="prose prose-sm max-w-none text-gray-800 break-words" th:utext="${post.activityObject.content}">
+                    Content
+                </div>
+
+                <!-- Attachments (Simplified) -->
+                <div th:if="${post.activityObject.class.simpleName == 'Note' && !post.activityObject.attachments.isEmpty()}" class="mt-4 grid grid-cols-2 gap-2">
+                    <div th:each="att : ${post.activityObject.attachments}" class="aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-100">
+                        <img th:src="${att.url}" class="w-full h-full object-cover" alt="Attachment">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Infinite Scroll Trigger -->
+            <div th:if="${iter.last && !posts.isEmpty()}" 
+                 th:hx-get="@{/posts/more(page=${nextPage ?: 0})}" 
+                 hx-trigger="revealed" 
+                 hx-swap="afterend" 
+                 class="h-1 flex items-center justify-center">
+            </div>
+        </article>
+    </div>
+</body>
+</html>

@@ -11,6 +11,7 @@ import java.util.*
 @Repository
 interface JpaPostRepository : JpaRepository<PostJpaEntity, UUID> {
     fun findTopByPlatformOrderByPublishedAtDesc(platform: PlatformType): PostJpaEntity?
+    fun findByPlatformAndOriginalId(platform: PlatformType, originalId: String): PostJpaEntity?
     fun findAllByOrderByPublishedAtDesc(): List<PostJpaEntity>
 
     // PGroonga を使った日本語全文検索

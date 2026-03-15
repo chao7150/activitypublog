@@ -62,23 +62,22 @@ class GenerateDigestUseCase(
 
     private fun createDigestPost(text: String): ActivityPost {
         val now = Instant.now()
-        return ActivityPost(
-            actor = Actor(
-                name = "System Digest",
-                preferredUsername = "system",
-                host = "internal",
-                profileUrl = null,
-                avatarUrl = null
-            ),
-            activityObject = ActivityObject.Note(
-                content = text,
-                publishedAt = now,
-                url = null // 内部生成のため、最初はURLなし
-            ),
-            source = PostSource(
-                platform = PlatformType.INTERNAL,
-                originalId = "digest-${now.toEpochMilli()}"
-            )
+        val actor = Actor(
+            name = "System Digest",
+            preferredUsername = "system",
+            host = "internal",
+            profileUrl = null,
+            avatarUrl = null
         )
+        val activityObject = ActivityObject.Note(
+            content = text,
+            publishedAt = now,
+            url = null // 内部生成のため、最初はURLなし
+        )
+        val source = PostSource(
+            platform = PlatformType.INTERNAL,
+            originalId = "digest-${now.toEpochMilli()}"
+        )
+        return ActivityPost.create(actor, activityObject, source)
     }
 }

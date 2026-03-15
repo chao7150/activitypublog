@@ -25,7 +25,7 @@ class GtsPostProvider(
         .build()
 
     override fun fetchLatestPosts(sinceId: String?): List<ActivityPost> {
-        val uri = "/api/v1/accounts/$accountId/statuses" + (sinceId?.let { "?since_id=$it" } ?: "")
+        val uri = "/api/v1/accounts/$accountId/statuses" + (sinceId?.let { "?min_id=$it" } ?: "")
         
         logger.debug("GoToSocial から投稿を取得中: $uri")
         

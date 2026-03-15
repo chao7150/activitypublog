@@ -18,14 +18,18 @@ class PostRepositoryImpl(
 ) : PostRepository {
 
     override fun save(post: ActivityPost): ActivityPost {
-        val entity = toEntity(post)
+        // 重複チェック: 同じプラットフォーム・同じOriginalIDの投稿が既に存在するか確認
+        val existing = jpaPostRepository.findByPlatformAndOriginalId(post.source.platform, post.source.originalId)
+        
+        // 既存がある場合はその ID を使い、なければ新規の ID を使う
+        val entity = toEntity(post, existing?.id ?: post.id)
         val saved = jpaPostRepository.save(entity)
         return toDomain(saved)
     }
 
     override fun saveAll(posts: List<ActivityPost>): List<ActivityPost> {
-        val entities = posts.map { toEntity(it) }
-        return jpaPostRepository.saveAll(entities).map { toDomain(it) }
+        // 各投稿ごとに重複チェックを行うため save を呼び出す
+        return posts.map { save(it) }
     }
 
     override fun findById(id: UUID): ActivityPost? {
@@ -48,10 +52,10 @@ class PostRepositoryImpl(
     // TODO: 後ほど実装
     override fun findByPlatform(platform: String): List<ActivityPost> = emptyList()
 
-    private fun toEntity(post: ActivityPost): PostJpaEntity {
+    private fun toEntity(post: ActivityPost, forcedId: UUID? = null): PostJpaEntity {
         val obj = post.activityObject
         return PostJpaEntity(
-            id = post.id,
+            id = forcedId ?: post.id,
             actorIdentifier = post.actor.identifier(),
             actorName = post.actor.name,
             content = obj.content,

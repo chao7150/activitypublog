@@ -6,7 +6,12 @@ import java.time.Instant
 import java.util.UUID
 
 @Entity
-@Table(name = "posts")
+@Table(
+    name = "posts",
+    uniqueConstraints = [
+        UniqueConstraint(columnNames = ["platform", "originalId"])
+    ]
+)
 class PostJpaEntity(
     @Id
     val id: UUID,

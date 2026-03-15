@@ -49,7 +49,7 @@ class GtsPostConverter(private val objectMapper: ObjectMapper) {
             attachments = attachments
         )
 
-        return ActivityPost(
+        return ActivityPost.create(
             actor = actor,
             activityObject = activityObject,
             source = PostSource(

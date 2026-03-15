@@ -48,3 +48,23 @@
 - **Context**: ドメインモデルを特定の技術（JPA/Hibernate）に依存させたくない。
 - **Decision**: 内部ドメイン Entity (`ActivityPost`) と JPA Entity (`PostJpaEntity`) を完全に分離し、Repository 実装クラスで相互にマッピングする。
 - **Consequences**: 技術スタックの変更に強くなり、ドメイン層の純粋性が保たれるが、マッピングコードの維持コストが発生する。
+
+## ADR 9: UI Framework - HTMX and Tailwind CSS (2026-03-14)
+- **Status**: Accepted
+- **Context**: フロントエンド開発（React/Vueなど）の学習コストや管理を最小化しつつ、動的なUIを実現したい。
+- **Decision**: **HTMX** と **Thymeleaf** (SSR) を組み合わせる。スタイリングには **Tailwind CSS** を採用する。
+- **Consequences**: 「Sync Now」ボタンや「無限スクロール」を最小限のJavaScriptで実装可能になり、開発速度が向上した。
+
+## ADR 10: スケジューリング戦略 (2026-03-14)
+- **Status**: Accepted
+- **Context**: 投稿の鮮度維持と、決まった時間（朝8時）のダイジェスト配信を自動化したい。
+- **Decision**: Spring Boot の `@Scheduled` を使用し、同期は1時間毎、ダイジェスト生成・配信は `0 0 8 * * *` (JST) で実行する。
+- **Consequences**: サーバーを立ち上げておくだけで、外部プラットフォームの活動が自動的に集約・再発信されるサイクルが完成した。
+
+## ADR 11: 本番環境デプロイ設定 (2026-03-14)
+- **Status**: Accepted
+- **Context**: 本番サーバー `sakura` には既に GoToSocial (8080) 等が稼働しており、ポート競合やディレクトリ管理に配慮が必要であった。
+- **Decision**: 
+  - 本プロジェクトの待ち受けポートを **8082** に変更。
+  - ディレクトリ `~/activitypublog_2` を新規作成し、既存のコードを温存しつつデプロイ。
+- **Consequences**: 既存サービスに影響を与えることなく、最新版のコンテナデプロイと動作確認に成功した。
